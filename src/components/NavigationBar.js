@@ -12,6 +12,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
+import HomeIcon from '@mui/icons-material/Home';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
@@ -44,6 +45,23 @@ class NavigationBar extends React.Component {
                 <Toolbar />
                 <Divider />
                 <List>
+
+                    <ListItem key='dashboard' disablePadding >
+                        <ListItemButton onClick={() => {
+                            this.props.navigation('/dashboard');
+                        
+                            this.setState({
+                                mobileOpen: false
+                            });
+                        }}>
+                            <ListItemIcon>
+                                <HomeIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Dashboard'} />
+                        </ListItemButton>
+                    </ListItem>
+
+                    
                     <ListItem key='shops' disablePadding >
                         <ListItemButton onClick={() => {
                             this.props.navigation('/shops');
