@@ -16,6 +16,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { useNavigation } from 'react-router-dom';
 
 const drawerWidth = 240;
@@ -74,6 +75,21 @@ class NavigationBar extends React.Component {
                                 <LocalGroceryStoreIcon />
                             </ListItemIcon>
                             <ListItemText primary={'Shops'} />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem key='cars' disablePadding >
+                        <ListItemButton onClick={() => {
+                            this.props.navigation('/cars');
+                        
+                            this.setState({
+                                mobileOpen: false
+                            });
+                        }}>
+                            <ListItemIcon>
+                                <DirectionsCarIcon />
+                            </ListItemIcon>
+                            <ListItemText primary={'Cars'} />
                         </ListItemButton>
                     </ListItem>
                 </List>
