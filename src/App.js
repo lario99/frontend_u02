@@ -9,21 +9,49 @@ import NavigationBar from './components/NavigationBar';
 import ShopPage from './pages/ShopPage';
 import CarsPage from './pages/CarsPage';
 import {useNavigate} from 'react-router-dom';
+import {createTheme, useTheme} from "@mui/material/styles";
+import {useEffect, useState} from "react";
+import {green, purple} from "@mui/material/colors";
+import {ThemeProvider} from "@emotion/react";
+import ThemePickerPage from "./pages/ThemePickerPage";
 
 
 function App() {
 
     const navigation = useNavigate()
+    let theme = createTheme();
+    const [selectedTheme, setSelectedTheme] = useState(theme);
+
+    useEffect(() => {
+        setSelectedTheme(theme);
+    }, []);
+
+
+    const changeTheme = (color) => {
+        setSelectedTheme(
+            createTheme({
+                palette: {
+                    primary: {
+                        main: color,
+                    },
+                },
+            })
+        )
+    }
+
     return (
         <div className="App">
-            <NavigationBar navigation={navigation} content={
-                <Routes>
-                    <Route exact path="/shops" element={<ShopPage shops={initData.shops}/>}/>
-                    <Route exact path="/dashboard" element={<DashboardPage data={populationStatistics}/>}/>
-                    <Route exact path="/cars" element={<CarsPage data={cars}/>}/>
-                    <Route exact path="*" element={<WelcomePage/>}/>
-                </Routes>
-            }/>
+            <ThemeProvider    theme={selectedTheme} >
+                <NavigationBar navigation={navigation} content={
+                    <Routes>
+                        <Route exact path="/shops" element={<ShopPage shops={initData.shops}/>}/>
+                        <Route exact path="/dashboard" element={<DashboardPage data={populationStatistics}/>}/>
+                        <Route exact path="/cars" element={<CarsPage data={cars}/>}/>
+                        <Route exact path="/theme" element={<ThemePickerPage change={changeTheme} theme ={selectedTheme}/>}/>
+                        <Route exact path="*" element={<WelcomePage />}/>
+                    </Routes>
+                }/>
+            </ThemeProvider>
         </div>
     );
 }

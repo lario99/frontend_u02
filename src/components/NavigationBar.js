@@ -15,6 +15,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import ColorLensIcon from '@mui/icons-material/ColorLens';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import { useNavigation } from 'react-router-dom';
@@ -56,7 +57,7 @@ class NavigationBar extends React.Component {
                             });
                         }}>
                             <ListItemIcon>
-                                <HomeIcon />
+                                <HomeIcon color="primary" />
                             </ListItemIcon>
                             <ListItemText primary={'Dashboard'} />
                         </ListItemButton>
@@ -72,7 +73,7 @@ class NavigationBar extends React.Component {
                             });
                         }}>
                             <ListItemIcon>
-                                <LocalGroceryStoreIcon />
+                                <LocalGroceryStoreIcon color="primary" />
                             </ListItemIcon>
                             <ListItemText primary={'Shops'} />
                         </ListItemButton>
@@ -87,9 +88,24 @@ class NavigationBar extends React.Component {
                             });
                         }}>
                             <ListItemIcon>
-                                <DirectionsCarIcon />
+                                <DirectionsCarIcon color="primary" />
                             </ListItemIcon>
                             <ListItemText primary={'Cars'} />
+                        </ListItemButton>
+                    </ListItem>
+
+                    <ListItem key='theme' disablePadding >
+                        <ListItemButton onClick={() => {
+                            this.props.navigation('/theme');
+
+                            this.setState({
+                                mobileOpen: false
+                            });
+                        }}>
+                            <ListItemIcon>
+                                <ColorLensIcon color="primary" />
+                            </ListItemIcon>
+                            <ListItemText primary={'Theme'} />
                         </ListItemButton>
                     </ListItem>
                 </List>
@@ -121,7 +137,7 @@ class NavigationBar extends React.Component {
                             <MenuIcon />
                         </IconButton>
                         <Typography variant="h6" noWrap component="div">
-                            Larionov U02
+                            Larionov U05
                         </Typography>
                     </Toolbar>
                 </AppBar>
